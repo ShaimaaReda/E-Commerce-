@@ -6,18 +6,40 @@ import './App.css'
 import Home from './pages/Home'
 import Layout from './component/Layout'
 import Login from './pages/Login'
+import Register from './pages/Register'
+import ProtectedRoute from './component/ProtectedRoute'
+import Product from './pages/Product'
+import NotFound from './pages/NotFound'
 
 function App() {
   const router = createBrowserRouter([
     { path:"/", 
-      element :<Layout/> ,
+    element:(
+    // <ProtectedRoute> <Layout/> </ProtectedRoute>
+      <Layout/> 
 
+    ),
       children:[
-      {path:"/", element:<Home/>},
+      {path:"/home", element:<Home/>},
       {path:"/login", element:<Login/>},
-
+      {path:"/register", element:<Register/>},
+      {path:"/product", element:<Product/>},
+      {path:"/notFound", element:<NotFound/>},
       ],
     },
+    // {
+    //   path:"/", 
+    //   element:(
+    //     <GuestRoute>
+    //       <Layout/>
+    //     </GuestRoute>
+    //   ),
+    //   children:[
+    //     {path:"/login", element:<Login/>},
+    //     {path:"/register", element:<Register/>},
+    //     {path:"/product", element:<Product/>},
+    //   ]
+    // }
   ]);
   return (
     <>
